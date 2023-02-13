@@ -1,0 +1,1666 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.0.2 (Python 3.11.1 on win32)" generated="20230213 15:29:47.235" rpa="false" schemaversion="3">
+<suite id="s1" name="mockAPI" source="C:\git\api-flask\testesMockAPI\features\mockAPI.robot">
+<test id="s1-t1" name="CT-001: Validar código de erro ao enviar um request sem autenticação" line="7">
+<kw name="Dado que esteja conectado na mockAPI" library="BDDpt-br" sourcename="Dado ${keyword}">
+<kw name="Run Keyword" library="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="que esteja conectado na mockAPI" library="mockAPI">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>mock</arg>
+<arg>http://localhost:8080/financial-instrument/v1</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20230213 15:29:47.678" level="INFO">Creating Session using : alias=mock, url=http://localhost:8080/financial-instrument/v1, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20230213 15:29:47.678" endtime="20230213 15:29:47.679"/>
+</kw>
+<status status="PASS" starttime="20230213 15:29:47.677" endtime="20230213 15:29:47.679"/>
+</kw>
+<status status="PASS" starttime="20230213 15:29:47.674" endtime="20230213 15:29:47.679"/>
+</kw>
+<status status="PASS" starttime="20230213 15:29:47.673" endtime="20230213 15:29:47.679"/>
+</kw>
+<kw name="Quando envio metodo GET sem autenticação no caminho /carbon-credit" library="BDDpt-br" sourcename="Quando ${keyword}">
+<kw name="Run Keyword" library="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="envio metodo GET sem autenticação no caminho /carbon-credit" library="mockAPI">
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${RESPOSTA}</var>
+<arg>enviar request sem autenticação</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="enviar request sem autenticação" library="mockAPI">
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${RESPOSTA}</var>
+<arg>mock</arg>
+<arg>/carbon-credit</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230213 15:29:49.764" level="INFO">GET Request : url=http://localhost:8080/financial-instrument/v1/carbon-credit 
+ path_url=/financial-instrument/v1/carbon-credit 
+ headers={'User-Agent': 'python-requests/2.28.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20230213 15:29:49.765" level="INFO">GET Response : url=http://localhost:8080/financial-instrument/v1/carbon-credit 
+ status=401, reason=UNAUTHORIZED 
+ headers={'Server': 'Werkzeug/2.2.2 Python/3.11.1', 'Date': 'Mon, 13 Feb 2023 18:29:49 GMT', 'Content-Type': 'application/problem+json', 'Content-Length': '119', 'Connection': 'close'} 
+ body={
+  "detail": "No authorization token provided",
+  "status": 401,
+  "title": "Unauthorized",
+  "type": "about:blank"
+}
+ 
+ </msg>
+<msg timestamp="20230213 15:29:49.765" level="FAIL">HTTPError: 401 Client Error: UNAUTHORIZED for url: http://localhost:8080/financial-instrument/v1/carbon-credit</msg>
+<status status="FAIL" starttime="20230213 15:29:47.685" endtime="20230213 15:29:49.777"/>
+</kw>
+<status status="FAIL" starttime="20230213 15:29:47.685" endtime="20230213 15:29:49.777"/>
+</kw>
+<msg timestamp="20230213 15:29:49.777" level="INFO">${RESPOSTA} = False</msg>
+<status status="PASS" starttime="20230213 15:29:47.685" endtime="20230213 15:29:49.777"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${RESPOSTA}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20230213 15:29:49.778" level="INFO">${RESPOSTA} = False</msg>
+<status status="PASS" starttime="20230213 15:29:49.778" endtime="20230213 15:29:49.778"/>
+</kw>
+<status status="PASS" starttime="20230213 15:29:47.683" endtime="20230213 15:29:49.779"/>
+</kw>
+<status status="PASS" starttime="20230213 15:29:47.680" endtime="20230213 15:29:49.779"/>
+</kw>
+<status status="PASS" starttime="20230213 15:29:47.680" endtime="20230213 15:29:49.779"/>
+</kw>
+<kw name="Entao recebo status 401 Not Authorized" library="BDDpt-br" sourcename="Entao ${keyword}">
+<kw name="Run Keyword" library="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="recebo status 401 Not Authorized" library="mockAPI">
+<kw name="Status Should Be" library="RequestsLibrary">
+<arg>401</arg>
+<arg>${RESPOSTA}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" starttime="20230213 15:29:49.787" endtime="20230213 15:29:49.788"/>
+</kw>
+<kw name="Delete All Sessions" library="RequestsLibrary">
+<doc>Removes all the session objects</doc>
+<msg timestamp="20230213 15:29:49.788" level="INFO">Deleting All Sessions</msg>
+<status status="PASS" starttime="20230213 15:29:49.788" endtime="20230213 15:29:49.789"/>
+</kw>
+<status status="PASS" starttime="20230213 15:29:49.786" endtime="20230213 15:29:49.789"/>
+</kw>
+<status status="PASS" starttime="20230213 15:29:49.781" endtime="20230213 15:29:49.789"/>
+</kw>
+<status status="PASS" starttime="20230213 15:29:49.780" endtime="20230213 15:29:49.789"/>
+</kw>
+<tag>ct-001</tag>
+<status status="PASS" starttime="20230213 15:29:47.673" endtime="20230213 15:29:49.790"/>
+</test>
+<test id="s1-t2" name="CT-002: Validar código de sucesso ao usar método GET no caminho /carbon-credit" line="13">
+<kw name="Dado que esteja conectado na mockAPI" library="BDDpt-br" sourcename="Dado ${keyword}">
+<kw name="Run Keyword" library="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="que esteja conectado na mockAPI" library="mockAPI">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>mock</arg>
+<arg>http://localhost:8080/financial-instrument/v1</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20230213 15:29:49.796" level="INFO">Creating Session using : alias=mock, url=http://localhost:8080/financial-instrument/v1, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20230213 15:29:49.796" endtime="20230213 15:29:49.797"/>
+</kw>
+<status status="PASS" starttime="20230213 15:29:49.795" endtime="20230213 15:29:49.797"/>
+</kw>
+<status status="PASS" starttime="20230213 15:29:49.792" endtime="20230213 15:29:49.797"/>
+</kw>
+<status status="PASS" starttime="20230213 15:29:49.791" endtime="20230213 15:29:49.797"/>
+</kw>
+<kw name="Quando envio metodo GET no caminho /carbon-credit" library="BDDpt-br" sourcename="Quando ${keyword}">
+<kw name="Run Keyword" library="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="envio metodo GET no caminho /carbon-credit" library="mockAPI">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${HEADER}</var>
+<arg>Content-Type=application/json</arg>
+<arg>Authorization=${TOKEN}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230213 15:29:49.807" level="INFO">${HEADER} = {'Content-Type': 'application/json', 'Authorization': 'Bearer yaman24'}</msg>
+<status status="PASS" starttime="20230213 15:29:49.806" endtime="20230213 15:29:49.807"/>
+</kw>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${RESPOSTA}</var>
+<arg>mock</arg>
+<arg>/carbon-credit</arg>
+<arg>headers=${HEADER}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230213 15:29:51.866" level="INFO">GET Request : url=http://localhost:8080/financial-instrument/v1/carbon-credit 
+ path_url=/financial-instrument/v1/carbon-credit 
+ headers={'User-Agent': 'python-requests/2.28.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Authorization': 'Bearer yaman24'} 
+ body=None 
+ </msg>
+<msg timestamp="20230213 15:29:51.866" level="INFO">GET Response : url=http://localhost:8080/financial-instrument/v1/carbon-credit 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/2.2.2 Python/3.11.1', 'Date': 'Mon, 13 Feb 2023 18:29:51 GMT', 'Content-Type': 'application/json', 'Content-Length': '740', 'Connection': 'close'} 
+ body={
+  "has_next": true,
+  "has_prev": true,
+  "page": 6.027456183070403,
+  "per_page": 1.4658129805029452,
+  "results": [
+    {
+      "amount": 1,
+      "certifier": "certifierx",
+      "cpfCnpj": "2",
+      "date": "2022-08-08",
+      "description": "description",
+      "holder": null,
+      "id": 1,
+      "myNumber": 2022,
+      "registrar": {
+        "name": "name",
+        "number": "number"
+      }
+    },
+    {
+      "amount": 1,
+      "certifier": "certifierx",
+      "cpfCnpj": "2",
+      "date": "2022-08-08",
+      "description": "description",
+      "holder": null,
+      "id": 1,
+      "myNumber": 2022,
+      "registrar": {
+        "name": "name",
+        "number": "number"
+      }
+    }
+  ],
+  "total": 0.8008281904610115
+}
+ 
+ </msg>
+<msg timestamp="20230213 15:29:51.867" level="INFO">${RESPOSTA} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230213 15:29:49.807" endtime="20230213 15:29:51.867"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${RESPOSTA}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20230213 15:29:51.868" level="INFO">${RESPOSTA} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230213 15:29:51.867" endtime="20230213 15:29:51.868"/>
+</kw>
+<status status="PASS" starttime="20230213 15:29:49.806" endtime="20230213 15:29:51.868"/>
+</kw>
+<status status="PASS" starttime="20230213 15:29:49.802" endtime="20230213 15:29:51.868"/>
+</kw>
+<status status="PASS" starttime="20230213 15:29:49.800" endtime="20230213 15:29:51.868"/>
+</kw>
+<kw name="Entao recebo status 200 OK" library="BDDpt-br" sourcename="Entao ${keyword}">
+<kw name="Run Keyword" library="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="recebo status 200 OK" library="mockAPI">
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${RESPOSTA.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20230213 15:29:51.879" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20230213 15:29:51.877" endtime="20230213 15:29:51.879"/>
+</kw>
+<kw name="Delete All Sessions" library="RequestsLibrary">
+<doc>Removes all the session objects</doc>
+<msg timestamp="20230213 15:29:51.879" level="INFO">Deleting All Sessions</msg>
+<status status="PASS" starttime="20230213 15:29:51.879" endtime="20230213 15:29:51.879"/>
+</kw>
+<status status="PASS" starttime="20230213 15:29:51.876" endtime="20230213 15:29:51.880"/>
+</kw>
+<status status="PASS" starttime="20230213 15:29:51.870" endtime="20230213 15:29:51.880"/>
+</kw>
+<status status="PASS" starttime="20230213 15:29:51.869" endtime="20230213 15:29:51.880"/>
+</kw>
+<tag>ct-002</tag>
+<status status="PASS" starttime="20230213 15:29:49.791" endtime="20230213 15:29:51.882"/>
+</test>
+<test id="s1-t3" name="CT-003: Validar código de sucesso ao usar método GET no caminho /carbon-credit/pending-approval" line="19">
+<kw name="Dado que esteja conectado na mockAPI" library="BDDpt-br" sourcename="Dado ${keyword}">
+<kw name="Run Keyword" library="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="que esteja conectado na mockAPI" library="mockAPI">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>mock</arg>
+<arg>http://localhost:8080/financial-instrument/v1</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20230213 15:29:51.891" level="INFO">Creating Session using : alias=mock, url=http://localhost:8080/financial-instrument/v1, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20230213 15:29:51.890" endtime="20230213 15:29:51.891"/>
+</kw>
+<status status="PASS" starttime="20230213 15:29:51.890" endtime="20230213 15:29:51.891"/>
+</kw>
+<status status="PASS" starttime="20230213 15:29:51.887" endtime="20230213 15:29:51.891"/>
+</kw>
+<status status="PASS" starttime="20230213 15:29:51.886" endtime="20230213 15:29:51.891"/>
+</kw>
+<kw name="Quando envio metodo GET no caminho /carbon-credit/pending-approval" library="BDDpt-br" sourcename="Quando ${keyword}">
+<kw name="Run Keyword" library="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="envio metodo GET no caminho /carbon-credit/pending-approval" library="mockAPI">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${HEADER}</var>
+<arg>Content-Type=application/json</arg>
+<arg>Authorization=${TOKEN}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230213 15:29:51.896" level="INFO">${HEADER} = {'Content-Type': 'application/json', 'Authorization': 'Bearer yaman24'}</msg>
+<status status="PASS" starttime="20230213 15:29:51.895" endtime="20230213 15:29:51.896"/>
+</kw>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${RESPOSTA}</var>
+<arg>mock</arg>
+<arg>/carbon-credit/pending-approval</arg>
+<arg>headers=${HEADER}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230213 15:29:53.953" level="INFO">GET Request : url=http://localhost:8080/financial-instrument/v1/carbon-credit/pending-approval 
+ path_url=/financial-instrument/v1/carbon-credit/pending-approval 
+ headers={'User-Agent': 'python-requests/2.28.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Authorization': 'Bearer yaman24'} 
+ body=None 
+ </msg>
+<msg timestamp="20230213 15:29:53.953" level="INFO">GET Response : url=http://localhost:8080/financial-instrument/v1/carbon-credit/pending-approval 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/2.2.2 Python/3.11.1', 'Date': 'Mon, 13 Feb 2023 18:29:53 GMT', 'Content-Type': 'application/json', 'Content-Length': '19', 'Connection': 'close'} 
+ body="do some magic 1!"
+ 
+ </msg>
+<msg timestamp="20230213 15:29:53.953" level="INFO">${RESPOSTA} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230213 15:29:51.897" endtime="20230213 15:29:53.953"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${RESPOSTA}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20230213 15:29:53.954" level="INFO">${RESPOSTA} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230213 15:29:53.953" endtime="20230213 15:29:53.954"/>
+</kw>
+<status status="PASS" starttime="20230213 15:29:51.895" endtime="20230213 15:29:53.954"/>
+</kw>
+<status status="PASS" starttime="20230213 15:29:51.892" endtime="20230213 15:29:53.954"/>
+</kw>
+<status status="PASS" starttime="20230213 15:29:51.892" endtime="20230213 15:29:53.954"/>
+</kw>
+<kw name="Entao recebo status 200 OK" library="BDDpt-br" sourcename="Entao ${keyword}">
+<kw name="Run Keyword" library="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="recebo status 200 OK" library="mockAPI">
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${RESPOSTA.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20230213 15:29:53.964" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20230213 15:29:53.963" endtime="20230213 15:29:53.965"/>
+</kw>
+<kw name="Delete All Sessions" library="RequestsLibrary">
+<doc>Removes all the session objects</doc>
+<msg timestamp="20230213 15:29:53.965" level="INFO">Deleting All Sessions</msg>
+<status status="PASS" starttime="20230213 15:29:53.965" endtime="20230213 15:29:53.965"/>
+</kw>
+<status status="PASS" starttime="20230213 15:29:53.962" endtime="20230213 15:29:53.965"/>
+</kw>
+<status status="PASS" starttime="20230213 15:29:53.956" endtime="20230213 15:29:53.965"/>
+</kw>
+<status status="PASS" starttime="20230213 15:29:53.956" endtime="20230213 15:29:53.965"/>
+</kw>
+<tag>ct-003</tag>
+<status status="PASS" starttime="20230213 15:29:51.884" endtime="20230213 15:29:53.966"/>
+</test>
+<test id="s1-t4" name="CT-004: Validar código de sucesso ao usar método POST no caminho /carbon-credit" line="25">
+<kw name="Dado que esteja conectado na mockAPI" library="BDDpt-br" sourcename="Dado ${keyword}">
+<kw name="Run Keyword" library="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="que esteja conectado na mockAPI" library="mockAPI">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>mock</arg>
+<arg>http://localhost:8080/financial-instrument/v1</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20230213 15:29:53.973" level="INFO">Creating Session using : alias=mock, url=http://localhost:8080/financial-instrument/v1, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20230213 15:29:53.973" endtime="20230213 15:29:53.973"/>
+</kw>
+<status status="PASS" starttime="20230213 15:29:53.973" endtime="20230213 15:29:53.974"/>
+</kw>
+<status status="PASS" starttime="20230213 15:29:53.969" endtime="20230213 15:29:53.974"/>
+</kw>
+<status status="PASS" starttime="20230213 15:29:53.969" endtime="20230213 15:29:53.974"/>
+</kw>
+<kw name="Quando envio metodo POST no caminho /carbon-credit" library="BDDpt-br" sourcename="Quando ${keyword}">
+<kw name="Run Keyword" library="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="envio metodo POST no caminho /carbon-credit" library="mockAPI">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${HEADER}</var>
+<arg>Content-Type=application/json</arg>
+<arg>Authorization=${TOKEN}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230213 15:29:53.979" level="INFO">${HEADER} = {'Content-Type': 'application/json', 'Authorization': 'Bearer yaman24'}</msg>
+<status status="PASS" starttime="20230213 15:29:53.978" endtime="20230213 15:29:53.979"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${BODY}</var>
+<arg>cpfCnpj=795.606.760-08</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230213 15:29:53.980" level="INFO">${BODY} = {'cpfCnpj': '795.606.760-08'}</msg>
+<status status="PASS" starttime="20230213 15:29:53.980" endtime="20230213 15:29:53.980"/>
+</kw>
+<kw name="Dumps" library="json">
+<var>${BODY_JSON}</var>
+<arg>${BODY}</arg>
+<doc>Serialize ``obj`` to a JSON formatted ``str``.</doc>
+<msg timestamp="20230213 15:29:53.982" level="INFO">${BODY_JSON} = {"cpfCnpj": "795.606.760-08"}</msg>
+<status status="PASS" starttime="20230213 15:29:53.982" endtime="20230213 15:29:53.982"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${RESPOSTA}</var>
+<arg>mock</arg>
+<arg>/carbon-credit</arg>
+<arg>headers=${HEADER}</arg>
+<arg>data=${BODY_JSON}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20230213 15:29:56.041" level="INFO">POST Request : url=http://localhost:8080/financial-instrument/v1/carbon-credit 
+ path_url=/financial-instrument/v1/carbon-credit 
+ headers={'User-Agent': 'python-requests/2.28.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Authorization': 'Bearer yaman24', 'Content-Length': '29'} 
+ body={"cpfCnpj": "795.606.760-08"} 
+ </msg>
+<msg timestamp="20230213 15:29:56.042" level="INFO">POST Response : url=http://localhost:8080/financial-instrument/v1/carbon-credit 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/2.2.2 Python/3.11.1', 'Date': 'Mon, 13 Feb 2023 18:29:56 GMT', 'Content-Type': 'application/json', 'Content-Length': '19', 'Connection': 'close'} 
+ body="do some magic 2!"
+ 
+ </msg>
+<msg timestamp="20230213 15:29:56.042" level="INFO">${RESPOSTA} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230213 15:29:53.982" endtime="20230213 15:29:56.042"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${RESPOSTA}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20230213 15:29:56.043" level="INFO">${RESPOSTA} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230213 15:29:56.042" endtime="20230213 15:29:56.043"/>
+</kw>
+<status status="PASS" starttime="20230213 15:29:53.978" endtime="20230213 15:29:56.043"/>
+</kw>
+<status status="PASS" starttime="20230213 15:29:53.975" endtime="20230213 15:29:56.043"/>
+</kw>
+<status status="PASS" starttime="20230213 15:29:53.974" endtime="20230213 15:29:56.043"/>
+</kw>
+<kw name="Entao recebo status 200 OK" library="BDDpt-br" sourcename="Entao ${keyword}">
+<kw name="Run Keyword" library="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="recebo status 200 OK" library="mockAPI">
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${RESPOSTA.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20230213 15:29:56.052" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20230213 15:29:56.051" endtime="20230213 15:29:56.052"/>
+</kw>
+<kw name="Delete All Sessions" library="RequestsLibrary">
+<doc>Removes all the session objects</doc>
+<msg timestamp="20230213 15:29:56.053" level="INFO">Deleting All Sessions</msg>
+<status status="PASS" starttime="20230213 15:29:56.052" endtime="20230213 15:29:56.053"/>
+</kw>
+<status status="PASS" starttime="20230213 15:29:56.050" endtime="20230213 15:29:56.053"/>
+</kw>
+<status status="PASS" starttime="20230213 15:29:56.045" endtime="20230213 15:29:56.053"/>
+</kw>
+<status status="PASS" starttime="20230213 15:29:56.044" endtime="20230213 15:29:56.053"/>
+</kw>
+<tag>ct-004</tag>
+<status status="PASS" starttime="20230213 15:29:53.967" endtime="20230213 15:29:56.054"/>
+</test>
+<test id="s1-t5" name="CT-005: Validar código de erro ao usar método POST com conteudo inválido no caminho /carbon-credit/approval" line="31">
+<kw name="Dado que esteja conectado na mockAPI" library="BDDpt-br" sourcename="Dado ${keyword}">
+<kw name="Run Keyword" library="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="que esteja conectado na mockAPI" library="mockAPI">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>mock</arg>
+<arg>http://localhost:8080/financial-instrument/v1</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20230213 15:29:56.060" level="INFO">Creating Session using : alias=mock, url=http://localhost:8080/financial-instrument/v1, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20230213 15:29:56.060" endtime="20230213 15:29:56.061"/>
+</kw>
+<status status="PASS" starttime="20230213 15:29:56.060" endtime="20230213 15:29:56.061"/>
+</kw>
+<status status="PASS" starttime="20230213 15:29:56.057" endtime="20230213 15:29:56.061"/>
+</kw>
+<status status="PASS" starttime="20230213 15:29:56.056" endtime="20230213 15:29:56.061"/>
+</kw>
+<kw name="Quando envio metodo POST com conteudo inválido no caminho /carbon-credit/approval" library="BDDpt-br" sourcename="Quando ${keyword}">
+<kw name="Run Keyword" library="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="envio metodo POST com conteudo inválido no caminho /carbon-credit/approval" library="mockAPI">
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${RESPOSTA}</var>
+<arg>enviar metodo POST com conteudo inválido no caminho /carbon-credit/approval</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="enviar metodo POST com conteudo inválido no caminho /carbon-credit/approval" library="mockAPI">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${HEADER}</var>
+<arg>Content-Type=application/json</arg>
+<arg>Authorization=${TOKEN}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230213 15:29:56.065" level="INFO">${HEADER} = {'Content-Type': 'application/json', 'Authorization': 'Bearer yaman24'}</msg>
+<status status="PASS" starttime="20230213 15:29:56.065" endtime="20230213 15:29:56.065"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${BODY}</var>
+<arg>conteudo=invalido</arg>
+<arg>chave=valor</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230213 15:29:56.065" level="INFO">${BODY} = {'conteudo': 'invalido', 'chave': 'valor'}</msg>
+<status status="PASS" starttime="20230213 15:29:56.065" endtime="20230213 15:29:56.065"/>
+</kw>
+<kw name="Dumps" library="json">
+<var>${BODY_JSON}</var>
+<arg>${BODY}</arg>
+<doc>Serialize ``obj`` to a JSON formatted ``str``.</doc>
+<msg timestamp="20230213 15:29:56.065" level="INFO">${BODY_JSON} = {"conteudo": "invalido", "chave": "valor"}</msg>
+<status status="PASS" starttime="20230213 15:29:56.065" endtime="20230213 15:29:56.065"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${RESPOSTA}</var>
+<arg>mock</arg>
+<arg>/carbon-credit/approval</arg>
+<arg>headers=${HEADER}</arg>
+<arg>data=${BODY_JSON}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20230213 15:29:58.101" level="INFO">POST Request : url=http://localhost:8080/financial-instrument/v1/carbon-credit/approval 
+ path_url=/financial-instrument/v1/carbon-credit/approval 
+ headers={'User-Agent': 'python-requests/2.28.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Authorization': 'Bearer yaman24', 'Content-Length': '42'} 
+ body={"conteudo": "invalido", "chave": "valor"} 
+ </msg>
+<msg timestamp="20230213 15:29:58.102" level="INFO">POST Response : url=http://localhost:8080/financial-instrument/v1/carbon-credit/approval 
+ status=400, reason=BAD REQUEST 
+ headers={'Server': 'Werkzeug/2.2.2 Python/3.11.1', 'Date': 'Mon, 13 Feb 2023 18:29:58 GMT', 'Content-Type': 'application/problem+json', 'Content-Length': '152', 'Connection': 'close'} 
+ body={
+  "detail": "{'conteudo': 'invalido', 'chave': 'valor'} is not of type 'array'",
+  "status": 400,
+  "title": "Bad Request",
+  "type": "about:blank"
+}
+ 
+ </msg>
+<msg timestamp="20230213 15:29:58.102" level="FAIL">HTTPError: 400 Client Error: BAD REQUEST for url: http://localhost:8080/financial-instrument/v1/carbon-credit/approval</msg>
+<status status="FAIL" starttime="20230213 15:29:56.065" endtime="20230213 15:29:58.104"/>
+</kw>
+<status status="FAIL" starttime="20230213 15:29:56.065" endtime="20230213 15:29:58.104"/>
+</kw>
+<msg timestamp="20230213 15:29:58.105" level="INFO">${RESPOSTA} = False</msg>
+<status status="PASS" starttime="20230213 15:29:56.065" endtime="20230213 15:29:58.105"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${RESPOSTA}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20230213 15:29:58.105" level="INFO">${RESPOSTA} = False</msg>
+<status status="PASS" starttime="20230213 15:29:58.105" endtime="20230213 15:29:58.105"/>
+</kw>
+<status status="PASS" starttime="20230213 15:29:56.064" endtime="20230213 15:29:58.105"/>
+</kw>
+<status status="PASS" starttime="20230213 15:29:56.062" endtime="20230213 15:29:58.105"/>
+</kw>
+<status status="PASS" starttime="20230213 15:29:56.062" endtime="20230213 15:29:58.105"/>
+</kw>
+<kw name="Entao recebo status 400 Bad Request" library="BDDpt-br" sourcename="Entao ${keyword}">
+<kw name="Run Keyword" library="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="recebo status 400 Bad Request" library="mockAPI">
+<kw name="Status Should Be" library="RequestsLibrary">
+<arg>400</arg>
+<arg>${RESPOSTA}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" starttime="20230213 15:29:58.113" endtime="20230213 15:29:58.113"/>
+</kw>
+<kw name="Delete All Sessions" library="RequestsLibrary">
+<doc>Removes all the session objects</doc>
+<msg timestamp="20230213 15:29:58.116" level="INFO">Deleting All Sessions</msg>
+<status status="PASS" starttime="20230213 15:29:58.114" endtime="20230213 15:29:58.116"/>
+</kw>
+<status status="PASS" starttime="20230213 15:29:58.113" endtime="20230213 15:29:58.117"/>
+</kw>
+<status status="PASS" starttime="20230213 15:29:58.107" endtime="20230213 15:29:58.117"/>
+</kw>
+<status status="PASS" starttime="20230213 15:29:58.106" endtime="20230213 15:29:58.117"/>
+</kw>
+<tag>ct-005</tag>
+<status status="PASS" starttime="20230213 15:29:56.055" endtime="20230213 15:29:58.118"/>
+</test>
+<test id="s1-t6" name="CT-006: Validar código de erro ao usar método POST sem body no caminho /carbon-credit/holder-approval" line="37">
+<kw name="Dado que esteja conectado na mockAPI" library="BDDpt-br" sourcename="Dado ${keyword}">
+<kw name="Run Keyword" library="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="que esteja conectado na mockAPI" library="mockAPI">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>mock</arg>
+<arg>http://localhost:8080/financial-instrument/v1</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20230213 15:29:58.124" level="INFO">Creating Session using : alias=mock, url=http://localhost:8080/financial-instrument/v1, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20230213 15:29:58.124" endtime="20230213 15:29:58.125"/>
+</kw>
+<status status="PASS" starttime="20230213 15:29:58.124" endtime="20230213 15:29:58.125"/>
+</kw>
+<status status="PASS" starttime="20230213 15:29:58.121" endtime="20230213 15:29:58.125"/>
+</kw>
+<status status="PASS" starttime="20230213 15:29:58.120" endtime="20230213 15:29:58.125"/>
+</kw>
+<kw name="Quando envio metodo POST sem body no caminho /carbon-credit/holder-approval" library="BDDpt-br" sourcename="Quando ${keyword}">
+<kw name="Run Keyword" library="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="envio metodo POST sem body no caminho /carbon-credit/holder-approval" library="mockAPI">
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${RESPOSTA}</var>
+<arg>enviar POST sem body no caminho /carbon-credit/holder-approval</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="enviar POST sem body no caminho /carbon-credit/holder-approval" library="mockAPI">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${HEADER}</var>
+<arg>Content-Type=application/json</arg>
+<arg>Authorization=${TOKEN}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230213 15:29:58.133" level="INFO">${HEADER} = {'Content-Type': 'application/json', 'Authorization': 'Bearer yaman24'}</msg>
+<status status="PASS" starttime="20230213 15:29:58.133" endtime="20230213 15:29:58.133"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${RESPOSTA}</var>
+<arg>mock</arg>
+<arg>/carbon-credit/holder-approval</arg>
+<arg>headers=${HEADER}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20230213 15:30:00.187" level="INFO">POST Request : url=http://localhost:8080/financial-instrument/v1/carbon-credit/holder-approval 
+ path_url=/financial-instrument/v1/carbon-credit/holder-approval 
+ headers={'User-Agent': 'python-requests/2.28.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Authorization': 'Bearer yaman24', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg timestamp="20230213 15:30:00.188" level="INFO">POST Response : url=http://localhost:8080/financial-instrument/v1/carbon-credit/holder-approval 
+ status=400, reason=BAD REQUEST 
+ headers={'Server': 'Werkzeug/2.2.2 Python/3.11.1', 'Date': 'Mon, 13 Feb 2023 18:30:00 GMT', 'Content-Type': 'application/problem+json', 'Content-Length': '114', 'Connection': 'close'} 
+ body={
+  "detail": "None is not of type 'array'",
+  "status": 400,
+  "title": "Bad Request",
+  "type": "about:blank"
+}
+ 
+ </msg>
+<msg timestamp="20230213 15:30:00.188" level="FAIL">HTTPError: 400 Client Error: BAD REQUEST for url: http://localhost:8080/financial-instrument/v1/carbon-credit/holder-approval</msg>
+<status status="FAIL" starttime="20230213 15:29:58.133" endtime="20230213 15:30:00.189"/>
+</kw>
+<status status="FAIL" starttime="20230213 15:29:58.132" endtime="20230213 15:30:00.189"/>
+</kw>
+<msg timestamp="20230213 15:30:00.189" level="INFO">${RESPOSTA} = False</msg>
+<status status="PASS" starttime="20230213 15:29:58.132" endtime="20230213 15:30:00.189"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${RESPOSTA}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20230213 15:30:00.190" level="INFO">${RESPOSTA} = False</msg>
+<status status="PASS" starttime="20230213 15:30:00.189" endtime="20230213 15:30:00.190"/>
+</kw>
+<status status="PASS" starttime="20230213 15:29:58.130" endtime="20230213 15:30:00.190"/>
+</kw>
+<status status="PASS" starttime="20230213 15:29:58.126" endtime="20230213 15:30:00.190"/>
+</kw>
+<status status="PASS" starttime="20230213 15:29:58.126" endtime="20230213 15:30:00.190"/>
+</kw>
+<kw name="Entao recebo status 400 Bad Request" library="BDDpt-br" sourcename="Entao ${keyword}">
+<kw name="Run Keyword" library="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="recebo status 400 Bad Request" library="mockAPI">
+<kw name="Status Should Be" library="RequestsLibrary">
+<arg>400</arg>
+<arg>${RESPOSTA}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" starttime="20230213 15:30:00.194" endtime="20230213 15:30:00.195"/>
+</kw>
+<kw name="Delete All Sessions" library="RequestsLibrary">
+<doc>Removes all the session objects</doc>
+<msg timestamp="20230213 15:30:00.195" level="INFO">Deleting All Sessions</msg>
+<status status="PASS" starttime="20230213 15:30:00.195" endtime="20230213 15:30:00.196"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:00.194" endtime="20230213 15:30:00.196"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:00.191" endtime="20230213 15:30:00.196"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:00.191" endtime="20230213 15:30:00.196"/>
+</kw>
+<tag>ct-006</tag>
+<status status="PASS" starttime="20230213 15:29:58.120" endtime="20230213 15:30:00.197"/>
+</test>
+<test id="s1-t7" name="CT-007: Validar código de falha ao usar método POST no caminho /carbon-credit com CPF inválido" line="43">
+<kw name="Dado que esteja conectado na mockAPI" library="BDDpt-br" sourcename="Dado ${keyword}">
+<kw name="Run Keyword" library="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="que esteja conectado na mockAPI" library="mockAPI">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>mock</arg>
+<arg>http://localhost:8080/financial-instrument/v1</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20230213 15:30:00.207" level="INFO">Creating Session using : alias=mock, url=http://localhost:8080/financial-instrument/v1, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20230213 15:30:00.207" endtime="20230213 15:30:00.207"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:00.207" endtime="20230213 15:30:00.207"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:00.202" endtime="20230213 15:30:00.207"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:00.202" endtime="20230213 15:30:00.207"/>
+</kw>
+<kw name="Quando envio metodo POST no caminho /carbon-credit com CPF inválido" library="BDDpt-br" sourcename="Quando ${keyword}">
+<kw name="Run Keyword" library="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="envio metodo POST no caminho /carbon-credit com CPF inválido" library="mockAPI">
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${RESPOSTA}</var>
+<arg>enviar post com CPF inválido</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="enviar post com CPF inválido" library="mockAPI">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${HEADER}</var>
+<arg>Content-Type=application/json</arg>
+<arg>Authorization=${TOKEN}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230213 15:30:00.214" level="INFO">${HEADER} = {'Content-Type': 'application/json', 'Authorization': 'Bearer yaman24'}</msg>
+<status status="PASS" starttime="20230213 15:30:00.213" endtime="20230213 15:30:00.214"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${BODY}</var>
+<arg>cpfCnpj=2</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230213 15:30:00.215" level="INFO">${BODY} = {'cpfCnpj': '2'}</msg>
+<status status="PASS" starttime="20230213 15:30:00.214" endtime="20230213 15:30:00.215"/>
+</kw>
+<kw name="Dumps" library="json">
+<var>${BODY_JSON}</var>
+<arg>${BODY}</arg>
+<doc>Serialize ``obj`` to a JSON formatted ``str``.</doc>
+<msg timestamp="20230213 15:30:00.216" level="INFO">${BODY_JSON} = {"cpfCnpj": "2"}</msg>
+<status status="PASS" starttime="20230213 15:30:00.216" endtime="20230213 15:30:00.216"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${RESPOSTA}</var>
+<arg>mock</arg>
+<arg>/carbon-credit</arg>
+<arg>headers=${HEADER}</arg>
+<arg>data=${BODY_JSON}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20230213 15:30:02.263" level="INFO">POST Request : url=http://localhost:8080/financial-instrument/v1/carbon-credit 
+ path_url=/financial-instrument/v1/carbon-credit 
+ headers={'User-Agent': 'python-requests/2.28.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Authorization': 'Bearer yaman24', 'Content-Length': '16'} 
+ body={"cpfCnpj": "2"} 
+ </msg>
+<msg timestamp="20230213 15:30:02.264" level="INFO">POST Response : url=http://localhost:8080/financial-instrument/v1/carbon-credit 
+ status=400, reason=BAD REQUEST 
+ headers={'Server': 'Werkzeug/2.2.2 Python/3.11.1', 'Date': 'Mon, 13 Feb 2023 18:30:02 GMT', 'Content-Type': 'application/json', 'Content-Length': '20', 'Connection': 'close'} 
+ body="CPF Inv\u00e1lido"
+ 
+ </msg>
+<msg timestamp="20230213 15:30:02.264" level="FAIL">HTTPError: 400 Client Error: BAD REQUEST for url: http://localhost:8080/financial-instrument/v1/carbon-credit</msg>
+<status status="FAIL" starttime="20230213 15:30:00.216" endtime="20230213 15:30:02.265"/>
+</kw>
+<status status="FAIL" starttime="20230213 15:30:00.212" endtime="20230213 15:30:02.265"/>
+</kw>
+<msg timestamp="20230213 15:30:02.265" level="INFO">${RESPOSTA} = False</msg>
+<status status="PASS" starttime="20230213 15:30:00.212" endtime="20230213 15:30:02.265"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${RESPOSTA}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20230213 15:30:02.266" level="INFO">${RESPOSTA} = False</msg>
+<status status="PASS" starttime="20230213 15:30:02.265" endtime="20230213 15:30:02.266"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:00.211" endtime="20230213 15:30:02.266"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:00.208" endtime="20230213 15:30:02.266"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:00.208" endtime="20230213 15:30:02.266"/>
+</kw>
+<kw name="Entao recebo status 400 Bad Request" library="BDDpt-br" sourcename="Entao ${keyword}">
+<kw name="Run Keyword" library="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="recebo status 400 Bad Request" library="mockAPI">
+<kw name="Status Should Be" library="RequestsLibrary">
+<arg>400</arg>
+<arg>${RESPOSTA}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" starttime="20230213 15:30:02.270" endtime="20230213 15:30:02.270"/>
+</kw>
+<kw name="Delete All Sessions" library="RequestsLibrary">
+<doc>Removes all the session objects</doc>
+<msg timestamp="20230213 15:30:02.270" level="INFO">Deleting All Sessions</msg>
+<status status="PASS" starttime="20230213 15:30:02.270" endtime="20230213 15:30:02.270"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:02.270" endtime="20230213 15:30:02.271"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:02.267" endtime="20230213 15:30:02.271"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:02.267" endtime="20230213 15:30:02.271"/>
+</kw>
+<tag>ct-007</tag>
+<status status="PASS" starttime="20230213 15:30:00.201" endtime="20230213 15:30:02.272"/>
+</test>
+<test id="s1-t8" name="CT-008: Validar falha ao usar ID inválido no caminho /carbon-credit/[id]" line="49">
+<kw name="Dado que esteja conectado na mockAPI" library="BDDpt-br" sourcename="Dado ${keyword}">
+<kw name="Run Keyword" library="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="que esteja conectado na mockAPI" library="mockAPI">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>mock</arg>
+<arg>http://localhost:8080/financial-instrument/v1</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20230213 15:30:02.282" level="INFO">Creating Session using : alias=mock, url=http://localhost:8080/financial-instrument/v1, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20230213 15:30:02.282" endtime="20230213 15:30:02.283"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:02.281" endtime="20230213 15:30:02.283"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:02.277" endtime="20230213 15:30:02.283"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:02.276" endtime="20230213 15:30:02.283"/>
+</kw>
+<kw name="Quando envio metodo GET no caminho /carbon-credit/[id] com ID inválido" library="BDDpt-br" sourcename="Quando ${keyword}">
+<kw name="Run Keyword" library="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="envio metodo GET no caminho /carbon-credit/[id] com ID inválido" library="mockAPI">
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${RESPOSTA}</var>
+<arg>enviar GET com ID inválido</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="enviar GET com ID inválido" library="mockAPI">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${HEADER}</var>
+<arg>Content-Type=application/json</arg>
+<arg>Authorization=${TOKEN}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230213 15:30:02.287" level="INFO">${HEADER} = {'Content-Type': 'application/json', 'Authorization': 'Bearer yaman24'}</msg>
+<status status="PASS" starttime="20230213 15:30:02.287" endtime="20230213 15:30:02.287"/>
+</kw>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${RESPOSTA}</var>
+<arg>mock</arg>
+<arg>/carbon-credit/99</arg>
+<arg>headers=${HEADER}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230213 15:30:04.362" level="INFO">GET Request : url=http://localhost:8080/financial-instrument/v1/carbon-credit/99 
+ path_url=/financial-instrument/v1/carbon-credit/99 
+ headers={'User-Agent': 'python-requests/2.28.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Authorization': 'Bearer yaman24'} 
+ body=None 
+ </msg>
+<msg timestamp="20230213 15:30:04.362" level="INFO">GET Response : url=http://localhost:8080/financial-instrument/v1/carbon-credit/99 
+ status=500, reason=INTERNAL SERVER ERROR 
+ headers={'Server': 'Werkzeug/2.2.2 Python/3.11.1', 'Date': 'Mon, 13 Feb 2023 18:30:04 GMT', 'Content-Type': 'application/problem+json', 'Content-Length': '251', 'Connection': 'close'} 
+ body={
+  "detail": "The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.",
+  "status": 500,
+  "title": "Internal Server Error",
+  "type": "about:blank"
+}
+ 
+ </msg>
+<msg timestamp="20230213 15:30:04.362" level="FAIL">HTTPError: 500 Server Error: INTERNAL SERVER ERROR for url: http://localhost:8080/financial-instrument/v1/carbon-credit/99</msg>
+<status status="FAIL" starttime="20230213 15:30:02.287" endtime="20230213 15:30:04.363"/>
+</kw>
+<status status="FAIL" starttime="20230213 15:30:02.287" endtime="20230213 15:30:04.364"/>
+</kw>
+<msg timestamp="20230213 15:30:04.365" level="INFO">${RESPOSTA} = False</msg>
+<status status="PASS" starttime="20230213 15:30:02.287" endtime="20230213 15:30:04.365"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${RESPOSTA}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20230213 15:30:04.365" level="INFO">${RESPOSTA} = False</msg>
+<status status="PASS" starttime="20230213 15:30:04.365" endtime="20230213 15:30:04.365"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:02.286" endtime="20230213 15:30:04.365"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:02.284" endtime="20230213 15:30:04.365"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:02.284" endtime="20230213 15:30:04.365"/>
+</kw>
+<kw name="Entao recebo status 500 Server Error" library="BDDpt-br" sourcename="Entao ${keyword}">
+<kw name="Run Keyword" library="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="recebo status 500 Server Error" library="mockAPI">
+<kw name="Status Should Be" library="RequestsLibrary">
+<arg>500</arg>
+<arg>${RESPOSTA}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" starttime="20230213 15:30:04.370" endtime="20230213 15:30:04.371"/>
+</kw>
+<kw name="Delete All Sessions" library="RequestsLibrary">
+<doc>Removes all the session objects</doc>
+<msg timestamp="20230213 15:30:04.371" level="INFO">Deleting All Sessions</msg>
+<status status="PASS" starttime="20230213 15:30:04.371" endtime="20230213 15:30:04.371"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:04.370" endtime="20230213 15:30:04.371"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:04.367" endtime="20230213 15:30:04.372"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:04.366" endtime="20230213 15:30:04.372"/>
+</kw>
+<tag>ct-008</tag>
+<status status="PASS" starttime="20230213 15:30:02.274" endtime="20230213 15:30:04.372"/>
+</test>
+<test id="s1-t9" name="CT-009: Validar retorno do ID correto ao usar GET com ID no caminho /carbon-credit/[id]" line="55">
+<kw name="Dado que esteja conectado na mockAPI" library="BDDpt-br" sourcename="Dado ${keyword}">
+<kw name="Run Keyword" library="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="que esteja conectado na mockAPI" library="mockAPI">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>mock</arg>
+<arg>http://localhost:8080/financial-instrument/v1</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20230213 15:30:04.383" level="INFO">Creating Session using : alias=mock, url=http://localhost:8080/financial-instrument/v1, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20230213 15:30:04.383" endtime="20230213 15:30:04.384"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:04.382" endtime="20230213 15:30:04.384"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:04.376" endtime="20230213 15:30:04.384"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:04.375" endtime="20230213 15:30:04.384"/>
+</kw>
+<kw name="Quando envio metodo GET com ID no caminho /carbon-credit/[id]" library="BDDpt-br" sourcename="Quando ${keyword}">
+<kw name="Run Keyword" library="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="envio metodo GET com ID no caminho /carbon-credit/[id]" library="mockAPI">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${HEADER}</var>
+<arg>Content-Type=application/json</arg>
+<arg>Authorization=${TOKEN}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230213 15:30:04.388" level="INFO">${HEADER} = {'Content-Type': 'application/json', 'Authorization': 'Bearer yaman24'}</msg>
+<status status="PASS" starttime="20230213 15:30:04.387" endtime="20230213 15:30:04.388"/>
+</kw>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${RESPOSTA}</var>
+<arg>mock</arg>
+<arg>/carbon-credit/${ID}</arg>
+<arg>headers=${HEADER}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230213 15:30:06.444" level="INFO">GET Request : url=http://localhost:8080/financial-instrument/v1/carbon-credit/1 
+ path_url=/financial-instrument/v1/carbon-credit/1 
+ headers={'User-Agent': 'python-requests/2.28.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Authorization': 'Bearer yaman24'} 
+ body=None 
+ </msg>
+<msg timestamp="20230213 15:30:06.444" level="INFO">GET Response : url=http://localhost:8080/financial-instrument/v1/carbon-credit/1 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/2.2.2 Python/3.11.1', 'Date': 'Mon, 13 Feb 2023 18:30:06 GMT', 'Content-Type': 'application/json', 'Content-Length': '286', 'Connection': 'close'} 
+ body={
+  "amount": 1,
+  "certifier": "certifierx",
+  "cpfCnpj": "841.155.040-05",
+  "date": "2022-08-08",
+  "description": "ativo",
+  "holder": {
+    "name": "john",
+    "number": "string"
+  },
+  "id": 1,
+  "myNumber": 2022,
+  "registrar": {
+    "name": "john",
+    "number": "string"
+  }
+}
+ 
+ </msg>
+<msg timestamp="20230213 15:30:06.445" level="INFO">${RESPOSTA} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230213 15:30:04.388" endtime="20230213 15:30:06.445"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${RESPOSTA}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20230213 15:30:06.445" level="INFO">${RESPOSTA} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230213 15:30:06.445" endtime="20230213 15:30:06.446"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:04.387" endtime="20230213 15:30:06.446"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:04.385" endtime="20230213 15:30:06.446"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:04.385" endtime="20230213 15:30:06.446"/>
+</kw>
+<kw name="Entao recebo resposta com o ID esperado" library="BDDpt-br" sourcename="Entao ${keyword}">
+<kw name="Run Keyword" library="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="recebo resposta com o ID esperado" library="mockAPI">
+<kw name="Get From Dictionary" library="Collections">
+<var>${RESPOSTA}</var>
+<arg>${RESPOSTA.json()}</arg>
+<arg>id</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230213 15:30:06.452" level="INFO">${RESPOSTA} = 1</msg>
+<status status="PASS" starttime="20230213 15:30:06.451" endtime="20230213 15:30:06.452"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${RESPOSTA}</arg>
+<arg>${ID}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20230213 15:30:06.454" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20230213 15:30:06.452" endtime="20230213 15:30:06.454"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:06.451" endtime="20230213 15:30:06.454"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:06.447" endtime="20230213 15:30:06.454"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:06.447" endtime="20230213 15:30:06.454"/>
+</kw>
+<tag>ct-009</tag>
+<status status="PASS" starttime="20230213 15:30:04.374" endtime="20230213 15:30:06.455"/>
+</test>
+<test id="s1-t10" name="CT-010: Validar retorno de CPF correto ao usar GET com ID no caminho /carbon-credit/[id]" line="61">
+<kw name="Dado que esteja conectado na mockAPI" library="BDDpt-br" sourcename="Dado ${keyword}">
+<kw name="Run Keyword" library="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="que esteja conectado na mockAPI" library="mockAPI">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>mock</arg>
+<arg>http://localhost:8080/financial-instrument/v1</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20230213 15:30:06.464" level="INFO">Creating Session using : alias=mock, url=http://localhost:8080/financial-instrument/v1, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20230213 15:30:06.464" endtime="20230213 15:30:06.465"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:06.463" endtime="20230213 15:30:06.465"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:06.459" endtime="20230213 15:30:06.465"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:06.458" endtime="20230213 15:30:06.465"/>
+</kw>
+<kw name="Quando envio metodo GET com ID no caminho /carbon-credit/[id]" library="BDDpt-br" sourcename="Quando ${keyword}">
+<kw name="Run Keyword" library="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="envio metodo GET com ID no caminho /carbon-credit/[id]" library="mockAPI">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${HEADER}</var>
+<arg>Content-Type=application/json</arg>
+<arg>Authorization=${TOKEN}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230213 15:30:06.470" level="INFO">${HEADER} = {'Content-Type': 'application/json', 'Authorization': 'Bearer yaman24'}</msg>
+<status status="PASS" starttime="20230213 15:30:06.470" endtime="20230213 15:30:06.470"/>
+</kw>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${RESPOSTA}</var>
+<arg>mock</arg>
+<arg>/carbon-credit/${ID}</arg>
+<arg>headers=${HEADER}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230213 15:30:08.514" level="INFO">GET Request : url=http://localhost:8080/financial-instrument/v1/carbon-credit/1 
+ path_url=/financial-instrument/v1/carbon-credit/1 
+ headers={'User-Agent': 'python-requests/2.28.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Authorization': 'Bearer yaman24'} 
+ body=None 
+ </msg>
+<msg timestamp="20230213 15:30:08.514" level="INFO">GET Response : url=http://localhost:8080/financial-instrument/v1/carbon-credit/1 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/2.2.2 Python/3.11.1', 'Date': 'Mon, 13 Feb 2023 18:30:08 GMT', 'Content-Type': 'application/json', 'Content-Length': '286', 'Connection': 'close'} 
+ body={
+  "amount": 1,
+  "certifier": "certifierx",
+  "cpfCnpj": "841.155.040-05",
+  "date": "2022-08-08",
+  "description": "ativo",
+  "holder": {
+    "name": "john",
+    "number": "string"
+  },
+  "id": 1,
+  "myNumber": 2022,
+  "registrar": {
+    "name": "john",
+    "number": "string"
+  }
+}
+ 
+ </msg>
+<msg timestamp="20230213 15:30:08.514" level="INFO">${RESPOSTA} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230213 15:30:06.470" endtime="20230213 15:30:08.514"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${RESPOSTA}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20230213 15:30:08.516" level="INFO">${RESPOSTA} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230213 15:30:08.514" endtime="20230213 15:30:08.516"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:06.469" endtime="20230213 15:30:08.516"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:06.466" endtime="20230213 15:30:08.516"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:06.466" endtime="20230213 15:30:08.516"/>
+</kw>
+<kw name="Entao recebo resposta com o CPF esperado" library="BDDpt-br" sourcename="Entao ${keyword}">
+<kw name="Run Keyword" library="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="recebo resposta com o CPF esperado" library="mockAPI">
+<kw name="Get From Dictionary" library="Collections">
+<var>${CPF}</var>
+<arg>${RESPOSTA.json()}</arg>
+<arg>cpfCnpj</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230213 15:30:08.521" level="INFO">${CPF} = 841.155.040-05</msg>
+<status status="PASS" starttime="20230213 15:30:08.520" endtime="20230213 15:30:08.521"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${CPF}</arg>
+<arg>841.155.040-05</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20230213 15:30:08.521" endtime="20230213 15:30:08.521"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:08.520" endtime="20230213 15:30:08.521"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:08.516" endtime="20230213 15:30:08.521"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:08.516" endtime="20230213 15:30:08.521"/>
+</kw>
+<tag>ct-010</tag>
+<status status="PASS" starttime="20230213 15:30:06.457" endtime="20230213 15:30:08.521"/>
+</test>
+<test id="s1-t11" name="CT-011: Validar campo holder contendo nome correto ao usar GET com ID no caminho /carbon-credit/[id]" line="67">
+<kw name="Dado que esteja conectado na mockAPI" library="BDDpt-br" sourcename="Dado ${keyword}">
+<kw name="Run Keyword" library="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="que esteja conectado na mockAPI" library="mockAPI">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>mock</arg>
+<arg>http://localhost:8080/financial-instrument/v1</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20230213 15:30:08.532" level="INFO">Creating Session using : alias=mock, url=http://localhost:8080/financial-instrument/v1, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20230213 15:30:08.531" endtime="20230213 15:30:08.532"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:08.531" endtime="20230213 15:30:08.532"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:08.526" endtime="20230213 15:30:08.532"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:08.525" endtime="20230213 15:30:08.532"/>
+</kw>
+<kw name="Quando envio metodo GET com ID no caminho /carbon-credit/[id]" library="BDDpt-br" sourcename="Quando ${keyword}">
+<kw name="Run Keyword" library="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="envio metodo GET com ID no caminho /carbon-credit/[id]" library="mockAPI">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${HEADER}</var>
+<arg>Content-Type=application/json</arg>
+<arg>Authorization=${TOKEN}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230213 15:30:08.537" level="INFO">${HEADER} = {'Content-Type': 'application/json', 'Authorization': 'Bearer yaman24'}</msg>
+<status status="PASS" starttime="20230213 15:30:08.537" endtime="20230213 15:30:08.537"/>
+</kw>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${RESPOSTA}</var>
+<arg>mock</arg>
+<arg>/carbon-credit/${ID}</arg>
+<arg>headers=${HEADER}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230213 15:30:10.594" level="INFO">GET Request : url=http://localhost:8080/financial-instrument/v1/carbon-credit/1 
+ path_url=/financial-instrument/v1/carbon-credit/1 
+ headers={'User-Agent': 'python-requests/2.28.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Authorization': 'Bearer yaman24'} 
+ body=None 
+ </msg>
+<msg timestamp="20230213 15:30:10.594" level="INFO">GET Response : url=http://localhost:8080/financial-instrument/v1/carbon-credit/1 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/2.2.2 Python/3.11.1', 'Date': 'Mon, 13 Feb 2023 18:30:10 GMT', 'Content-Type': 'application/json', 'Content-Length': '286', 'Connection': 'close'} 
+ body={
+  "amount": 1,
+  "certifier": "certifierx",
+  "cpfCnpj": "841.155.040-05",
+  "date": "2022-08-08",
+  "description": "ativo",
+  "holder": {
+    "name": "john",
+    "number": "string"
+  },
+  "id": 1,
+  "myNumber": 2022,
+  "registrar": {
+    "name": "john",
+    "number": "string"
+  }
+}
+ 
+ </msg>
+<msg timestamp="20230213 15:30:10.594" level="INFO">${RESPOSTA} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230213 15:30:08.537" endtime="20230213 15:30:10.594"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${RESPOSTA}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20230213 15:30:10.594" level="INFO">${RESPOSTA} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230213 15:30:10.594" endtime="20230213 15:30:10.594"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:08.537" endtime="20230213 15:30:10.595"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:08.534" endtime="20230213 15:30:10.595"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:08.534" endtime="20230213 15:30:10.595"/>
+</kw>
+<kw name="Entao recebo resposta com o holder contendo nome correto" library="BDDpt-br" sourcename="Entao ${keyword}">
+<kw name="Run Keyword" library="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="recebo resposta com o holder contendo nome correto" library="mockAPI">
+<kw name="Get From Dictionary" library="Collections">
+<var>${RESPOSTA}</var>
+<arg>${RESPOSTA.json()}</arg>
+<arg>holder</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230213 15:30:10.600" level="INFO">${RESPOSTA} = {'name': 'john', 'number': 'string'}</msg>
+<status status="PASS" starttime="20230213 15:30:10.599" endtime="20230213 15:30:10.600"/>
+</kw>
+<kw name="Dictionary Should Contain Item" library="Collections">
+<arg>${RESPOSTA}</arg>
+<arg>name</arg>
+<arg>john</arg>
+<doc>An item of ``key`` / ``value`` must be found in a ``dictionary``.</doc>
+<status status="PASS" starttime="20230213 15:30:10.600" endtime="20230213 15:30:10.601"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${RESPOSTA}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230213 15:30:10.601" level="INFO">{'name': 'john', 'number': 'string'}</msg>
+<status status="PASS" starttime="20230213 15:30:10.601" endtime="20230213 15:30:10.601"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:10.599" endtime="20230213 15:30:10.602"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:10.597" endtime="20230213 15:30:10.602"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:10.596" endtime="20230213 15:30:10.602"/>
+</kw>
+<tag>ct-011</tag>
+<status status="PASS" starttime="20230213 15:30:08.524" endtime="20230213 15:30:10.602"/>
+</test>
+<test id="s1-t12" name="CT-012: Validar campo certifier contendo valor correto ao usar GET com ID no caminho /carbon-credit/[id]" line="73">
+<kw name="Dado que esteja conectado na mockAPI" library="BDDpt-br" sourcename="Dado ${keyword}">
+<kw name="Run Keyword" library="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="que esteja conectado na mockAPI" library="mockAPI">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>mock</arg>
+<arg>http://localhost:8080/financial-instrument/v1</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20230213 15:30:10.613" level="INFO">Creating Session using : alias=mock, url=http://localhost:8080/financial-instrument/v1, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20230213 15:30:10.613" endtime="20230213 15:30:10.613"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:10.612" endtime="20230213 15:30:10.614"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:10.606" endtime="20230213 15:30:10.614"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:10.606" endtime="20230213 15:30:10.614"/>
+</kw>
+<kw name="Quando envio metodo GET com ID no caminho /carbon-credit/[id]" library="BDDpt-br" sourcename="Quando ${keyword}">
+<kw name="Run Keyword" library="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="envio metodo GET com ID no caminho /carbon-credit/[id]" library="mockAPI">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${HEADER}</var>
+<arg>Content-Type=application/json</arg>
+<arg>Authorization=${TOKEN}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230213 15:30:10.620" level="INFO">${HEADER} = {'Content-Type': 'application/json', 'Authorization': 'Bearer yaman24'}</msg>
+<status status="PASS" starttime="20230213 15:30:10.620" endtime="20230213 15:30:10.620"/>
+</kw>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${RESPOSTA}</var>
+<arg>mock</arg>
+<arg>/carbon-credit/${ID}</arg>
+<arg>headers=${HEADER}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230213 15:30:12.671" level="INFO">GET Request : url=http://localhost:8080/financial-instrument/v1/carbon-credit/1 
+ path_url=/financial-instrument/v1/carbon-credit/1 
+ headers={'User-Agent': 'python-requests/2.28.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Authorization': 'Bearer yaman24'} 
+ body=None 
+ </msg>
+<msg timestamp="20230213 15:30:12.671" level="INFO">GET Response : url=http://localhost:8080/financial-instrument/v1/carbon-credit/1 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/2.2.2 Python/3.11.1', 'Date': 'Mon, 13 Feb 2023 18:30:12 GMT', 'Content-Type': 'application/json', 'Content-Length': '286', 'Connection': 'close'} 
+ body={
+  "amount": 1,
+  "certifier": "certifierx",
+  "cpfCnpj": "841.155.040-05",
+  "date": "2022-08-08",
+  "description": "ativo",
+  "holder": {
+    "name": "john",
+    "number": "string"
+  },
+  "id": 1,
+  "myNumber": 2022,
+  "registrar": {
+    "name": "john",
+    "number": "string"
+  }
+}
+ 
+ </msg>
+<msg timestamp="20230213 15:30:12.671" level="INFO">${RESPOSTA} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230213 15:30:10.620" endtime="20230213 15:30:12.671"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${RESPOSTA}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20230213 15:30:12.672" level="INFO">${RESPOSTA} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230213 15:30:12.672" endtime="20230213 15:30:12.672"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:10.619" endtime="20230213 15:30:12.672"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:10.616" endtime="20230213 15:30:12.672"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:10.615" endtime="20230213 15:30:12.672"/>
+</kw>
+<kw name="Entao recebo resposta com o certifier contendo valor correto" library="BDDpt-br" sourcename="Entao ${keyword}">
+<kw name="Run Keyword" library="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="recebo resposta com o certifier contendo valor correto" library="mockAPI">
+<kw name="Get From Dictionary" library="Collections">
+<var>${CERTIFIER}</var>
+<arg>${RESPOSTA.json()}</arg>
+<arg>certifier</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230213 15:30:12.678" level="INFO">${CERTIFIER} = certifierx</msg>
+<status status="PASS" starttime="20230213 15:30:12.678" endtime="20230213 15:30:12.678"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${CERTIFIER}</arg>
+<arg>certifierx</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20230213 15:30:12.678" endtime="20230213 15:30:12.679"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:12.678" endtime="20230213 15:30:12.679"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:12.674" endtime="20230213 15:30:12.679"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:12.673" endtime="20230213 15:30:12.679"/>
+</kw>
+<tag>ct-012</tag>
+<status status="PASS" starttime="20230213 15:30:10.604" endtime="20230213 15:30:12.680"/>
+</test>
+<test id="s1-t13" name="CT-013: Validar campo date contendo valor correto ao usar GET com ID no caminho /carbon-credit/[id]" line="79">
+<kw name="Dado que esteja conectado na mockAPI" library="BDDpt-br" sourcename="Dado ${keyword}">
+<kw name="Run Keyword" library="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="que esteja conectado na mockAPI" library="mockAPI">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>mock</arg>
+<arg>http://localhost:8080/financial-instrument/v1</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20230213 15:30:12.687" level="INFO">Creating Session using : alias=mock, url=http://localhost:8080/financial-instrument/v1, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20230213 15:30:12.687" endtime="20230213 15:30:12.687"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:12.686" endtime="20230213 15:30:12.687"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:12.683" endtime="20230213 15:30:12.687"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:12.682" endtime="20230213 15:30:12.687"/>
+</kw>
+<kw name="Quando envio metodo GET com ID no caminho /carbon-credit/[id]" library="BDDpt-br" sourcename="Quando ${keyword}">
+<kw name="Run Keyword" library="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="envio metodo GET com ID no caminho /carbon-credit/[id]" library="mockAPI">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${HEADER}</var>
+<arg>Content-Type=application/json</arg>
+<arg>Authorization=${TOKEN}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230213 15:30:12.692" level="INFO">${HEADER} = {'Content-Type': 'application/json', 'Authorization': 'Bearer yaman24'}</msg>
+<status status="PASS" starttime="20230213 15:30:12.691" endtime="20230213 15:30:12.693"/>
+</kw>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${RESPOSTA}</var>
+<arg>mock</arg>
+<arg>/carbon-credit/${ID}</arg>
+<arg>headers=${HEADER}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230213 15:30:14.758" level="INFO">GET Request : url=http://localhost:8080/financial-instrument/v1/carbon-credit/1 
+ path_url=/financial-instrument/v1/carbon-credit/1 
+ headers={'User-Agent': 'python-requests/2.28.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Authorization': 'Bearer yaman24'} 
+ body=None 
+ </msg>
+<msg timestamp="20230213 15:30:14.759" level="INFO">GET Response : url=http://localhost:8080/financial-instrument/v1/carbon-credit/1 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/2.2.2 Python/3.11.1', 'Date': 'Mon, 13 Feb 2023 18:30:14 GMT', 'Content-Type': 'application/json', 'Content-Length': '286', 'Connection': 'close'} 
+ body={
+  "amount": 1,
+  "certifier": "certifierx",
+  "cpfCnpj": "841.155.040-05",
+  "date": "2022-08-08",
+  "description": "ativo",
+  "holder": {
+    "name": "john",
+    "number": "string"
+  },
+  "id": 1,
+  "myNumber": 2022,
+  "registrar": {
+    "name": "john",
+    "number": "string"
+  }
+}
+ 
+ </msg>
+<msg timestamp="20230213 15:30:14.759" level="INFO">${RESPOSTA} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230213 15:30:12.694" endtime="20230213 15:30:14.759"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${RESPOSTA}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20230213 15:30:14.761" level="INFO">${RESPOSTA} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230213 15:30:14.759" endtime="20230213 15:30:14.761"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:12.691" endtime="20230213 15:30:14.761"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:12.688" endtime="20230213 15:30:14.761"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:12.688" endtime="20230213 15:30:14.762"/>
+</kw>
+<kw name="Entao recebo resposta com a data contendo valor correto" library="BDDpt-br" sourcename="Entao ${keyword}">
+<kw name="Run Keyword" library="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="recebo resposta com a data contendo valor correto" library="mockAPI">
+<kw name="Get From Dictionary" library="Collections">
+<var>${DATA}</var>
+<arg>${RESPOSTA.json()}</arg>
+<arg>date</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230213 15:30:14.771" level="INFO">${DATA} = 2022-08-08</msg>
+<status status="PASS" starttime="20230213 15:30:14.769" endtime="20230213 15:30:14.771"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${DATA}</arg>
+<arg>2022-08-08</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20230213 15:30:14.771" endtime="20230213 15:30:14.772"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:14.769" endtime="20230213 15:30:14.772"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:14.763" endtime="20230213 15:30:14.772"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:14.762" endtime="20230213 15:30:14.772"/>
+</kw>
+<tag>ct-013</tag>
+<status status="PASS" starttime="20230213 15:30:12.681" endtime="20230213 15:30:14.775"/>
+</test>
+<test id="s1-t14" name="CT-014: Validar campo description contendo valor correto ao usar GET com ID no caminho /carbon-credit/[id]" line="85">
+<kw name="Dado que esteja conectado na mockAPI" library="BDDpt-br" sourcename="Dado ${keyword}">
+<kw name="Run Keyword" library="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="que esteja conectado na mockAPI" library="mockAPI">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>mock</arg>
+<arg>http://localhost:8080/financial-instrument/v1</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20230213 15:30:14.783" level="INFO">Creating Session using : alias=mock, url=http://localhost:8080/financial-instrument/v1, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20230213 15:30:14.783" endtime="20230213 15:30:14.784"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:14.783" endtime="20230213 15:30:14.784"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:14.780" endtime="20230213 15:30:14.784"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:14.780" endtime="20230213 15:30:14.785"/>
+</kw>
+<kw name="Quando envio metodo GET com ID no caminho /carbon-credit/[id]" library="BDDpt-br" sourcename="Quando ${keyword}">
+<kw name="Run Keyword" library="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="envio metodo GET com ID no caminho /carbon-credit/[id]" library="mockAPI">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${HEADER}</var>
+<arg>Content-Type=application/json</arg>
+<arg>Authorization=${TOKEN}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230213 15:30:14.788" level="INFO">${HEADER} = {'Content-Type': 'application/json', 'Authorization': 'Bearer yaman24'}</msg>
+<status status="PASS" starttime="20230213 15:30:14.788" endtime="20230213 15:30:14.788"/>
+</kw>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${RESPOSTA}</var>
+<arg>mock</arg>
+<arg>/carbon-credit/${ID}</arg>
+<arg>headers=${HEADER}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230213 15:30:16.832" level="INFO">GET Request : url=http://localhost:8080/financial-instrument/v1/carbon-credit/1 
+ path_url=/financial-instrument/v1/carbon-credit/1 
+ headers={'User-Agent': 'python-requests/2.28.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Authorization': 'Bearer yaman24'} 
+ body=None 
+ </msg>
+<msg timestamp="20230213 15:30:16.832" level="INFO">GET Response : url=http://localhost:8080/financial-instrument/v1/carbon-credit/1 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/2.2.2 Python/3.11.1', 'Date': 'Mon, 13 Feb 2023 18:30:16 GMT', 'Content-Type': 'application/json', 'Content-Length': '286', 'Connection': 'close'} 
+ body={
+  "amount": 1,
+  "certifier": "certifierx",
+  "cpfCnpj": "841.155.040-05",
+  "date": "2022-08-08",
+  "description": "ativo",
+  "holder": {
+    "name": "john",
+    "number": "string"
+  },
+  "id": 1,
+  "myNumber": 2022,
+  "registrar": {
+    "name": "john",
+    "number": "string"
+  }
+}
+ 
+ </msg>
+<msg timestamp="20230213 15:30:16.832" level="INFO">${RESPOSTA} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230213 15:30:14.789" endtime="20230213 15:30:16.832"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${RESPOSTA}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20230213 15:30:16.832" level="INFO">${RESPOSTA} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230213 15:30:16.832" endtime="20230213 15:30:16.832"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:14.788" endtime="20230213 15:30:16.832"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:14.785" endtime="20230213 15:30:16.832"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:14.785" endtime="20230213 15:30:16.832"/>
+</kw>
+<kw name="Entao recebo resposta com o description contendo valor correto" library="BDDpt-br" sourcename="Entao ${keyword}">
+<kw name="Run Keyword" library="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="recebo resposta com o description contendo valor correto" library="mockAPI">
+<kw name="Get From Dictionary" library="Collections">
+<var>${DESCRIPTION}</var>
+<arg>${RESPOSTA.json()}</arg>
+<arg>description</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230213 15:30:16.838" level="INFO">${DESCRIPTION} = ativo</msg>
+<status status="PASS" starttime="20230213 15:30:16.838" endtime="20230213 15:30:16.838"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${DESCRIPTION}</arg>
+<arg>ativo</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20230213 15:30:16.838" endtime="20230213 15:30:16.839"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:16.836" endtime="20230213 15:30:16.839"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:16.834" endtime="20230213 15:30:16.839"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:16.834" endtime="20230213 15:30:16.839"/>
+</kw>
+<tag>ct-014</tag>
+<status status="PASS" starttime="20230213 15:30:14.777" endtime="20230213 15:30:16.839"/>
+</test>
+<test id="s1-t15" name="CT-015: Validar campo myNumber contendo valor correto ao usar GET com ID no caminho /carbon-credit/[id]" line="91">
+<kw name="Dado que esteja conectado na mockAPI" library="BDDpt-br" sourcename="Dado ${keyword}">
+<kw name="Run Keyword" library="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="que esteja conectado na mockAPI" library="mockAPI">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>mock</arg>
+<arg>http://localhost:8080/financial-instrument/v1</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20230213 15:30:16.847" level="INFO">Creating Session using : alias=mock, url=http://localhost:8080/financial-instrument/v1, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20230213 15:30:16.847" endtime="20230213 15:30:16.849"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:16.847" endtime="20230213 15:30:16.849"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:16.841" endtime="20230213 15:30:16.849"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:16.841" endtime="20230213 15:30:16.849"/>
+</kw>
+<kw name="Quando envio metodo GET com ID no caminho /carbon-credit/[id]" library="BDDpt-br" sourcename="Quando ${keyword}">
+<kw name="Run Keyword" library="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="envio metodo GET com ID no caminho /carbon-credit/[id]" library="mockAPI">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${HEADER}</var>
+<arg>Content-Type=application/json</arg>
+<arg>Authorization=${TOKEN}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230213 15:30:16.852" level="INFO">${HEADER} = {'Content-Type': 'application/json', 'Authorization': 'Bearer yaman24'}</msg>
+<status status="PASS" starttime="20230213 15:30:16.852" endtime="20230213 15:30:16.852"/>
+</kw>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${RESPOSTA}</var>
+<arg>mock</arg>
+<arg>/carbon-credit/${ID}</arg>
+<arg>headers=${HEADER}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230213 15:30:18.894" level="INFO">GET Request : url=http://localhost:8080/financial-instrument/v1/carbon-credit/1 
+ path_url=/financial-instrument/v1/carbon-credit/1 
+ headers={'User-Agent': 'python-requests/2.28.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Authorization': 'Bearer yaman24'} 
+ body=None 
+ </msg>
+<msg timestamp="20230213 15:30:18.894" level="INFO">GET Response : url=http://localhost:8080/financial-instrument/v1/carbon-credit/1 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/2.2.2 Python/3.11.1', 'Date': 'Mon, 13 Feb 2023 18:30:18 GMT', 'Content-Type': 'application/json', 'Content-Length': '286', 'Connection': 'close'} 
+ body={
+  "amount": 1,
+  "certifier": "certifierx",
+  "cpfCnpj": "841.155.040-05",
+  "date": "2022-08-08",
+  "description": "ativo",
+  "holder": {
+    "name": "john",
+    "number": "string"
+  },
+  "id": 1,
+  "myNumber": 2022,
+  "registrar": {
+    "name": "john",
+    "number": "string"
+  }
+}
+ 
+ </msg>
+<msg timestamp="20230213 15:30:18.894" level="INFO">${RESPOSTA} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230213 15:30:16.852" endtime="20230213 15:30:18.894"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${RESPOSTA}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20230213 15:30:18.895" level="INFO">${RESPOSTA} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230213 15:30:18.894" endtime="20230213 15:30:18.895"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:16.851" endtime="20230213 15:30:18.895"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:16.849" endtime="20230213 15:30:18.895"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:16.849" endtime="20230213 15:30:18.895"/>
+</kw>
+<kw name="Entao recebo resposta com o myNumber contendo valor correto" library="BDDpt-br" sourcename="Entao ${keyword}">
+<kw name="Run Keyword" library="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="recebo resposta com o myNumber contendo valor correto" library="mockAPI">
+<kw name="Get From Dictionary" library="Collections">
+<var>${MYNUMBER}</var>
+<arg>${RESPOSTA.json()}</arg>
+<arg>myNumber</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230213 15:30:18.899" level="INFO">${MYNUMBER} = 2022</msg>
+<status status="PASS" starttime="20230213 15:30:18.899" endtime="20230213 15:30:18.899"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${MYNUMBER}</arg>
+<arg>2022</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<msg timestamp="20230213 15:30:18.900" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20230213 15:30:18.900" endtime="20230213 15:30:18.900"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:18.899" endtime="20230213 15:30:18.900"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:18.896" endtime="20230213 15:30:18.900"/>
+</kw>
+<status status="PASS" starttime="20230213 15:30:18.896" endtime="20230213 15:30:18.900"/>
+</kw>
+<tag>ct-015</tag>
+<status status="PASS" starttime="20230213 15:30:16.840" endtime="20230213 15:30:18.901"/>
+</test>
+<status status="PASS" starttime="20230213 15:29:47.239" endtime="20230213 15:30:18.903"/>
+</suite>
+<statistics>
+<total>
+<stat pass="15" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">ct-001</stat>
+<stat pass="1" fail="0" skip="0">ct-002</stat>
+<stat pass="1" fail="0" skip="0">ct-003</stat>
+<stat pass="1" fail="0" skip="0">ct-004</stat>
+<stat pass="1" fail="0" skip="0">ct-005</stat>
+<stat pass="1" fail="0" skip="0">ct-006</stat>
+<stat pass="1" fail="0" skip="0">ct-007</stat>
+<stat pass="1" fail="0" skip="0">ct-008</stat>
+<stat pass="1" fail="0" skip="0">ct-009</stat>
+<stat pass="1" fail="0" skip="0">ct-010</stat>
+<stat pass="1" fail="0" skip="0">ct-011</stat>
+<stat pass="1" fail="0" skip="0">ct-012</stat>
+<stat pass="1" fail="0" skip="0">ct-013</stat>
+<stat pass="1" fail="0" skip="0">ct-014</stat>
+<stat pass="1" fail="0" skip="0">ct-015</stat>
+</tag>
+<suite>
+<stat pass="15" fail="0" skip="0" id="s1" name="mockAPI">mockAPI</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
